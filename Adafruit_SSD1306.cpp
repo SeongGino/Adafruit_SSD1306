@@ -60,6 +60,12 @@
 
 // SOME DEFINES AND STATIC VARIABLES USED INTERNALLY -----------------------
 
+#ifdef SSD1306_DIM_NO_SHUTOFF
+#define SSD1306_CONTRAST 0x01
+#else
+#define SSD1306_CONTRAST 0
+#endif
+
 #if defined(I2C_BUFFER_LENGTH)
 #define WIRE_MAX min(256, I2C_BUFFER_LENGTH) ///< Particle or similar Wire lib
 #elif defined(BUFFER_LENGTH)
@@ -1184,6 +1190,6 @@ void Adafruit_SSD1306::dim(bool dim) {
   // it is useful to dim the display
   TRANSACTION_START
   ssd1306_command1(SSD1306_SETCONTRAST);
-  ssd1306_command1(dim ? 0 : contrast);
+  ssd1306_command1(dim ? SSD1306_CONTRAST : contrast);
   TRANSACTION_END
 }

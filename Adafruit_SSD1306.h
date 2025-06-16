@@ -33,7 +33,10 @@
 // AND HEIGHT ARGUMENTS).
 
 // Uncomment to disable Adafruit splash logo
-// #define SSD1306_NO_SPLASH
+#define SSD1306_NO_SPLASH
+
+// Uncomment to set dim to minimum contrast mode instead of shutting off the display
+#define SSD1306_DIM_NO_SHUTOFF
 
 #if defined(ARDUINO_STM32_FEATHER)
 typedef class HardwareSPI SPIClass;
